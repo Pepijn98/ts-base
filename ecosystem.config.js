@@ -1,10 +1,10 @@
 module.exports = {
     apps: [
         {
-            name: "Apollo",
+            name: "base",
             script: "ts-node",
             interpreter: `${process.env.NVM_BIN}/node`,
-            args: "-r tsconfig-paths/register ./src/server.ts",
+            args: "-r tsconfig-paths/register ./src/index.ts",
             instances: 1,
             autorestart: true,
             watch: false,
