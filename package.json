@@ -1,0 +1,52 @@
+{
+    "name": "base",
+    "version": "0.0.1",
+    "description": "Just a base project with all the config files like eslint, prettier, tsconfig",
+    "main": "src/index.ts",
+    "license": "MIT",
+    "homepage": "https://github.com/Pepijn98/base#readme",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Pepijn98/base.git"
+    },
+    "bugs": {
+        "url": "https://github.com/Pepijn98/base/issues"
+    },
+    "author": {
+        "name": "Pepijn van den Broek",
+        "email": "pepijn@vdbroek.dev",
+        "url": "https://vdbroek.dev/"
+    },
+    "scripts": {
+        "deploy": "pm2 start ecosystem.config.js --env production",
+        "start": "cross-env NODE_ENV=production ts-node -r tsconfig-paths/register src/index.ts",
+        "test": "yarn dev",
+        "dev": "cross-env NODE_ENV=development nodemon --watch '**/*.ts' --ignore '**/*.spec.ts' --exec 'ts-node' -r tsconfig-paths/register src/index.ts",
+        "prebuild": "rm -rf dist",
+        "prestart": "yarn lint",
+        "pretest": "yarn lint",
+        "build": "tsc",
+        "deps": "depcheck",
+        "format": "prettier --write \"src/**/*.{ts,js}\" \"./*.{ts,js}\"",
+        "lint": "eslint \"src/**/*.{ts,js}\" \"./*.{ts,js}\" --fix",
+        "pretty": "yarn format && yarn lint",
+        "clean": "rm -rf ./node_modules ./package-lock.json ./yarn.lock"
+    },
+    "dependencies": {},
+    "devDependencies": {
+        "@types/node": "^14.11.7",
+        "@typescript-eslint/eslint-plugin": "^4.4.0",
+        "@typescript-eslint/parser": "^4.4.0",
+        "depcheck": "1.2.0",
+        "cross-env": "^7.0.2",
+        "eslint": "^7.10.0",
+        "eslint-config-prettier": "^6.12.0",
+        "eslint-plugin-import": "^2.22.1",
+        "gts": "^3.0.0",
+        "nodemon": "^2.0.4",
+        "prettier": "^2.1.2",
+        "ts-node": "^9.0.0",
+        "tsconfig-paths": "^3.9.0",
+        "typescript": "^4.0.3"
+    }
+}
